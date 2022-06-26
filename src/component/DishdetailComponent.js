@@ -40,7 +40,7 @@ class Dishdetail extends Component{
                 return(
                     <>
                         <li>{co.comment}</li><br />
-                        <li>-- {co.author}, {this.formatDate(co.date)}</li><br />
+                        <li>-- {co.author}, {new Intl.DateTimeFormat('en-US', {year:'numeric',month:'short',day:'2-digit'}).format(new Date(Date.parse(co.date)))}</li><br />
                     </>
                 )
             });
@@ -51,12 +51,6 @@ class Dishdetail extends Component{
         else{
             return(<div></div>)
         }
-    }
-    formatDate(date){
-        const option = {year: 'numeric', month: 'short', day: 'numeric' };
-        const date1 = new Date(date);
-        const newdate = date1.toLocaleDateString("en-US", option);
-        return newdate;
     }
 }
 export default Dishdetail;
